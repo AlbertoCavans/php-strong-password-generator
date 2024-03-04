@@ -1,6 +1,28 @@
 <?php
 
+function create_password($password_length) {
 
+    $new_password = "";
+    for ($i = 0; $i < $password_length; $i++) {
+    $letters = implode("", range("a", "z"));
+    $letter_index = rand(0, strlen($letters) - 1);
+    $random_letter = $letters[$letter_index];
+    $new_password .= $random_letter;
+    }
+
+    return $new_password;
+
+}
+
+$password_length = isset($_GET['password-parameter']) ? (int) $_GET['password-parameter'] : 7;
+
+$form_sent = !empty($_GET);
+
+if ($form_sent) {
+
+    $new_password = create_password($password_length);
+    var_dump($new_password);
+}
 ?>
 
 
@@ -29,7 +51,7 @@
                 <label for="password-parameter" class="form-label">
                     Numero caratteri
                 </label>
-                <input type="text" class="form-control" name="password-parameter" id="password-parameter">
+                <input type="number" class="form-control" name="password-parameter" id="password-parameter" value="<?= $password_length ?>">
             </div> 
             <div class="col-1 d-flex">
             <button class="btn btn-primary align-self-end">
