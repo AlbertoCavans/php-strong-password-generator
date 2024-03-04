@@ -8,6 +8,9 @@ $form_sent = !empty($_GET);
 
 if ($form_sent) {
 
-    $new_password = create_password($password_length);
+    session_start();
+
+    $_SESSION["new-password"] = create_password($password_length);
+
     header("Location: ./result.php");
 }

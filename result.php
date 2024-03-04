@@ -1,3 +1,14 @@
+<?php
+
+session_start();
+if (!isset($_SESSION["new-password"]) || empty($_SESSION["new-password"])) {
+
+    header("Location: ./index.php");
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +29,7 @@
         <form class="row">
             <div class="col-4">
                 <h3>Ecco la tua nuova password!</h3>
-                <h5 class="text-success">Password</h5>
+                <h5 class="text-success"><?= $_SESSION["new-password"] ?></h5>
             </div> 
 
         </form>
