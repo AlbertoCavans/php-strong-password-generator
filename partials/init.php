@@ -9,5 +9,5 @@ $form_sent = !empty($_GET);
 if ($form_sent) {
 
     $new_password = create_password($password_length);
-    var_dump($new_password);
+    header("Location: ./result.php");
 }
